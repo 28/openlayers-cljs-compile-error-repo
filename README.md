@@ -14,7 +14,7 @@ Interesting to mention, when build with lein cljsbuild plugin it compiles succes
 Here is the example stacktrace:
 
 ```
-Copying jar:file:/C:/Users/***/Documents/Projects/openlayers-cljs-compile-error-repo/openlayers-3.15.1.jar!/cljsjs/openlayers/development/ol/events/event.js to out\file:\C:\Users\****\Documents\Projects\openlayers-cljs-compile-error-repo\openlayers-3.15.1.jar!\
+Copying jar:file:/C:/Users/****/Documents/Projects/openlayers-cljs-compile-error-repo/openlayers-3.15.1.jar!/cljsjs/openlayers/development/ol/events/event.js to out\file:\C:\Users\****\Documents\Projects\openlayers-cljs-compile-error-repo\openlayers-3.15.1.jar!\
 cljsjs\openlayers\development\ol\events\event.js
 Exception in thread "main" java.io.IOException: The filename, directory name, or volume label syntax is incorrect, compiling:(C:\Users\****\Documents\Projects\openlayers-cljs-compile-error-repo\build.clj:3:1)
         at clojure.lang.Compiler.load(Compiler.java:7391)
@@ -73,4 +73,19 @@ Caused by: java.io.IOException: The filename, directory name, or volume label sy
         ... 11 more
 ```
 
-Note: User name is masked with '*' but it is consisted of ASCII characters, not spaces or wierd letters.
+Note: User name is masked with '*' but it is consisted of ASCII characters, not spaces or weird letters.
+
+### Linux observations
+
+No error is raised on Linux machines, but the "error" exists. Dependency path is not separated as it
+should - it still contains full file URL from jar file, but on Linux ! and : in file path doesn't make
+a problem. See the example:
+
+```
+goog.addDependency("../file:/home/****/Documents/openlayers-cljs-compile-error-repo/openlayers-3.15.1.jar!/cljsjs/openlayers/development/ol/events/event.js", ['ol.events.Event'], []);
+...
+```
+
+### Fix
+
+Issue is reported on ClojureScript Jira here [CLJS-1868](http://dev.clojure.org/jira/browse/CLJS-1868).
