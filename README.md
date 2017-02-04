@@ -89,3 +89,4 @@ goog.addDependency("../file:/home/****/Documents/openlayers-cljs-compile-error-r
 ### Fix
 
 Issue is reported on ClojureScript Jira here [CLJS-1868](http://dev.clojure.org/jira/browse/CLJS-1868).
+This [fix](CLJS-1868.patch) was submitted to [CLJS-1868](http://dev.clojure.org/jira/browse/CLJS-1868).
