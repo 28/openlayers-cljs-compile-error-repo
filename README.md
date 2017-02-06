@@ -89,4 +89,17 @@ goog.addDependency("../file:/home/****/Documents/openlayers-cljs-compile-error-r
 ### Fix
 
 Issue is reported on ClojureScript Jira here [CLJS-1868](http://dev.clojure.org/jira/browse/CLJS-1868).
+
+he problem was in the function that produced relative output paths for deps (lib-rel-path).
+It tried to remove the first part of the absolute path with clojure.string/replace, but
+it tried it with a wrong match (it did not reproduce the actual first part of the path)
+so it effectively did nothing.
+
+Example:
+(str (io/file (System/getProperty "user.dir") lib-path) File/separator)
+produced
+file:\C:\Users&#42;***\Documents\Projects\openlayers-cljs-compile-error-repo\cljsjs\openlayers\development\
+instead of
+file:\C:\Users&#42;***\Documents\Projects\openlayers-cljs-compile-error-repo\openlayers-3.15.1.jar!\cljsjs\openlayers\development\
+
 This [fix](CLJS-1868.patch) was submitted to [CLJS-1868](http://dev.clojure.org/jira/browse/CLJS-1868).
