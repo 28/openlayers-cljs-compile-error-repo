@@ -95,13 +95,14 @@ It tried to remove the first part of the absolute path with clojure.string/repla
 it tried it with a wrong match (it did not reproduce the actual first part of the path)
 so it effectively did nothing.
 
-Example:```(str (io/file (System/getProperty "user.dir") lib-path) File/separator)```
-produced
+Example:
+```(str (io/file (System/getProperty "user.dir") lib-path) File/separator)```
+produced:
 
-file:\C:\Users\&ast;&ast;&ast;&ast;\Documents\Projects\openlayers-cljs-compile-error-repo\cljsjs\openlayers\development\
+```file:\C:\Users\****\Documents\Projects\openlayers-cljs-compile-error-repo\cljsjs\openlayers\development\```
 
 instead of
 
-file:\C:\Users\&ast;&ast;&ast;&ast;\Documents\Projects\openlayers-cljs-compile-error-repo\openlayers-3.15.1.jar!\cljsjs\openlayers\development\
+```file:\C:\Users\****\Documents\Projects\openlayers-cljs-compile-error-repo\openlayers-3.15.1.jar!\cljsjs\openlayers\development\```
 
 This [fix](CLJS-1868.patch) was submitted to [CLJS-1868](http://dev.clojure.org/jira/browse/CLJS-1868).
