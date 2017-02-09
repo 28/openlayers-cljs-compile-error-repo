@@ -9,8 +9,6 @@ versions 1.8.0 and 1.9.293 respectfully and openlayers 3.15.1 version.
 
 The problem presentation is based on [ClojureScript Quick start guide](https://clojurescript.org/guides/quick-start). It shows a minimal representation of the problem.
 
-Interesting to mention, when build with lein cljsbuild plugin it compiles successfully and when built with Figwheel it shows the same problem.
-
 Here is the example stacktrace:
 
 ```
