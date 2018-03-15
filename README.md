@@ -105,4 +105,4 @@ instead of
 
 This [fix](CLJS-1868.patch) was submitted to [CLJS-1868](http://dev.clojure.org/jira/browse/CLJS-1868).
 
-**The patch has been applied in this [commit](https://github.com/clojure/clojurescript/commit/9e5b7ac64dd0388d3403f48381c80ba1e3998da8), thus solving the this issue.**
+**The patch has been applied in this [commit](https://github.com/clojure/clojurescript/commit/9e5b7ac64dd0388d3403f48381c80ba1e3998da8), thus solving the issue.**
